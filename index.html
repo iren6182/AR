@@ -3,49 +3,19 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AR 3D Model with Play/Pause</title>
-<script type="module" src="https://cdn.jsdelivr.net/npm/@google/model-viewer@latest"></script>
-<style>
-       body {
-           margin: 0;
-           padding: 0;
-           height: 100%;
-           display: flex;
-           justify-content: center;
-           align-items: center;
-           flex-direction: column;
-           background-color: #f0f0f0;
-       }
-       model-viewer {
-           width: 100%;
-           height: 80%;
-       }
-       .button-container {
-           display: flex;
-           justify-content: center;
-           margin-top: 20px;
-       }
-       button {
-           padding: 10px 20px;
-           font-size: 18px;
-           cursor: pointer;
-       }
-</style>
+<title>GLB Model Viewer</title>
+<!-- Load model-viewer script -->
+<script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
 </head>
 <body>
-<!-- 3D Model Viewer with AR functionality -->
-<model-viewer id="model"
-                 src="https://github.com/iren6182/AR/raw/main/assets/louvers.glb"
-                 alt="3D model"
-                 auto-rotate camera-controls ar
-                 ar-modes="webxr scene-viewer quick-look"
-                 ar-scale="auto">
+<h1>GLB Model Viewer</h1>
+<!-- Embed GLB file in model-viewer -->
+<model-viewer
+   src="https://github.com/iren6182/AR/raw/main/assets/louvers.glb"
+   alt="3D model"
+   auto-rotate
+   camera-controls
+   style="width: 100%; height: 500px;">
 </model-viewer>
-<!-- Buttons to control animation -->
-<div class="button-container">
-<button onclick="document.querySelector('#model').play()">Play</button>
-<button onclick="document.querySelector('#model').pause()">Pause</button>
-</div>
 </body>
 </html>
-
