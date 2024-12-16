@@ -3,25 +3,49 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Interactive 3D Model</title>
-<script src="https://aframe.io/releases/1.3.0/aframe.min.js"></script>
+<title>AR 3D Model with Play/Pause</title>
+<script type="module" src="https://cdn.jsdelivr.net/npm/@google/model-viewer@latest"></script>
 <style>
-       body { margin: 0; padding: 0; display: flex; justify-content: center; align-items: center; height: 100vh; background-color: #f0f0f0; flex-direction: column; }
-       a-scene { width: 100%; height: 100%; }
-       .button-container { display: flex; justify-content: center; margin-top: 20px; }
-       button { padding: 10px 20px; font-size: 18px; cursor: pointer; }
+       body {
+           margin: 0;
+           padding: 0;
+           height: 100%;
+           display: flex;
+           justify-content: center;
+           align-items: center;
+           flex-direction: column;
+           background-color: #f0f0f0;
+       }
+       model-viewer {
+           width: 100%;
+           height: 80%;
+       }
+       .button-container {
+           display: flex;
+           justify-content: center;
+           margin-top: 20px;
+       }
+       button {
+           padding: 10px 20px;
+           font-size: 18px;
+           cursor: pointer;
+       }
 </style>
 </head>
 <body>
-<a-scene>
-<!-- 3D Model -->
-<a-entity id="model" gltf-model="assets/louvers.glb" position="0 1.5 -3" scale="1 1 1" animation-mixer>
-</a-entity>
-</a-scene>
+<!-- 3D Model Viewer with AR functionality -->
+<model-viewer id="model"
+                 src="https://raw.githubusercontent.com/yourusername/yourrepository-name/main/assets/louvers.glb"
+                 alt="3D model"
+                 auto-rotate camera-controls ar
+                 ar-modes="webxr scene-viewer quick-look"
+                 ar-scale="auto">
+</model-viewer>
 <!-- Buttons to control animation -->
 <div class="button-container">
-<button onclick="document.querySelector('#model').setAttribute('animation-mixer', 'loop: true;')">Play</button>
-<button onclick="document.querySelector('#model').setAttribute('animation-mixer', 'pause: true;')">Pause</button>
+<button onclick="document.querySelector('#model').play()">Play</button>
+<button onclick="document.querySelector('#model').pause()">Pause</button>
 </div>
 </body>
 </html>
+has context menu
